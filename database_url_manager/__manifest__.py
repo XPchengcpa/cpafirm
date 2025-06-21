@@ -1,7 +1,7 @@
 
 {
     'name': 'Database Url Manager',
-    "version": "18.0.1",
+    "version": "18.0.0.0.1",
     "author": "Mo Li",
     "category": "Tools",
     "description":"""
