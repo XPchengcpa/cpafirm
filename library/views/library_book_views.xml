@@ -1,0 +1,57 @@
+<odoo>
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form string="Library Book">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="author_id" />
+                        <!-- 多对一的关联，尽量以下划线 id 结尾 
+                         一对多one2many的以_ids 结尾-->
+                        <field name="published_date" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_library_book_tree" model="ir.ui.view">
+        <field name="name">library.book.tree</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <list string="Library Books">
+                <field name="name" />
+                <field name="author_id" />
+                <field name="published_date" />
+            </list>
+        </field>
+    </record>
+
+
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="name">Library Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_library_root" name="Library" />
+    <menuitem id="menu_library_books" name="Books" parent="menu_library_root" />
+    <menuitem id="menu_library_books_list" name="All Books" parent="menu_library_books"
+        action="action_library_book" />
+
+    <!-- action定义 要写一个动作，action_library_author 是动作的id，action_library_author 是动作的名称-->
+    <record id="action_library_author_id" model="ir.actions.act_window">
+        <field name="name">Library Authors</field>
+        <field name="res_model">library.author</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- 添加菜单author -->
+    <menuitem id="menu_library_author_list" name="Author" parent="menu_library_root"
+        action="action_library_author_id" />
+
+    <!-- 加了菜单加了动作就需要升级，升级后才能看到 -->
+
+    <!--页面菜单 -->
+</odoo>
