@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_library_root" name="Library" 
+        sequence="10"
+        web_icon="library,static/description/icon.png"/>
+
+    <menuitem id="menu_library_books" name="Books" parent="menu_library_root" 
+        sequence="5"/>
+    <menuitem id="menu_library_books_list" name="All Books" parent="menu_library_books"
+        action="action_library_book" />
+    
+    <menuitem id="menu_library_author_list" name="Author" parent="menu_library_root"
+        sequence="10"
+        action="action_library_author_id" />
+    
+    <menuitem id="menu_library_book_tags" name="Tags" parent="menu_library_root"
+        sequence="15"
+        action="action_library_book_tags" />
+</odoo>
