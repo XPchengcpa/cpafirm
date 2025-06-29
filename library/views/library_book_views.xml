@@ -7,13 +7,13 @@
             <form string="Library Book">
                 <sheet>
                     <div class="row justify-content-between position-relative w-100 m-0 mb-2">
-                        <div class="oe_title mw-75 ps-0 pe-2">
+                         <div class="oe_title mw-75 ps-0 pe-2">
                             <h1 class="d-flex flex-row align-items-center">
                                 <field name="name" placeholder="Book's Name"
                                     required="True" style="font-size: min(4vw, 2.6rem);"/>
                             </h1>
                             <h2>
-                                <field name="publisher" placeholder="出版社"/>
+                                <field name="publisher_id" placeholder="出版社"/>
                             </h2>
                         </div>
                         <div class="o_employee_avatar m-0 p-0">
@@ -24,6 +24,7 @@
                         <group>
                             <field name="name" />
                             <field name="author_id" />
+                            <field name="publisher_id" />
                             <field name="published_date" />
                             <field name="tag_ids" widget="many2many_tags" />
                         </group>
@@ -37,6 +38,11 @@
                         <!-- 多对一的关联，尽量以下划线 id 结尾 
                          一对多one2many的以_ids 结尾-->
                     </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" placeholder="Enter book description with HTML formatting..."/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -49,6 +55,7 @@
             <list string="Library Books">
                 <field name="name" />
                 <field name="author_id" />
+                <field name="publisher_id" />
                 <field name="published_date" />
                 <field name="state"/>
             </list>

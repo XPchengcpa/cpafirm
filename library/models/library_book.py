@@ -8,7 +8,7 @@ class LibraryBook(models.Model):
     _check_company_auto = True
 
     name = fields.Char(string='Name', required=True)
-    publisher = fields.Char(string="Publisher")
+    publisher_id = fields.Many2one('library.publisher', string="Publisher")
     published_date = fields.Date(string='Published Date')
     currency_id = fields.Many2one('res.currency', help='The currency used to sale', string="Currency")
     company_id = fields.Many2one('res.company', string='Company', required=True, readonly=True, index=True, default=lambda self: self.env.company,
@@ -24,6 +24,7 @@ class LibraryBook(models.Model):
         string='Author'
     )
     image = fields.Image(string="Image")
+    description = fields.Html(string="Description", help="Book description with HTML formatting")
     state = fields.Selection(
         selection=[
             ('draft', 'Draft'),

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_library_publisher_form" model="ir.ui.view">
+        <field name="name">library.publisher.form</field>
+        <field name="model">library.publisher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="2">
+                        <group>
+                            <field name="name" />
+                            <field name="phone" />
+                            <field name="email" />
+                        </group>
+                        <group>
+                            <field name="website" />
+                            <field name="address" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="books" string="Books">
+                            <field name="book_ids">
+                                <list editable="bottom" string="Books" default_order="id">
+                                    <field name="name" />
+                                    <field name="author_id" />
+                                    <field name="published_date" />
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_library_publisher_tree" model="ir.ui.view">
+        <field name="name">library.publisher.tree</field>
+        <field name="model">library.publisher</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="phone" />
+                <field name="email" />
+                <field name="website" />
+            </list>
+        </field>
+    </record>
+
+    <!-- 出版社动作定义 -->
+    <record id="action_library_publisher_id" model="ir.actions.act_window">
+        <field name="name">Library Publishers</field>
+        <field name="res_model">library.publisher</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo> 

@@ -13,7 +13,15 @@
         sequence="10"
         action="action_library_author_id" />
     
-    <menuitem id="menu_library_book_tags" name="Tags" parent="menu_library_root"
+    <menuitem id="menu_library_publisher_list" name="Publishers" parent="menu_library_root"
+        sequence="12"
+        action="action_library_publisher_id" />
+    
+    <menuitem id="menu_library_borrow_list" name="Borrow Records" parent="menu_library_root"
         sequence="15"
+        action="action_library_borrow_id" />
+    
+    <menuitem id="menu_library_book_tags" name="Tags" parent="menu_library_root"
+        sequence="20"
         action="action_library_book_tags" />
 </odoo>

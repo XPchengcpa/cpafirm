@@ -8,9 +8,12 @@
     "installable": True,
     "application": True,
     "data": [
+        "data/ir_sequence_data.xml",
         "security/ir.model.access.csv",
         "views/library_book_views.xml",
-        "views/ibrary_author_views.xml",
+        "views/library_author_views.xml",
+        "views/library_publisher_views.xml",
+        "views/library_borrow_views.xml",
         "views/library_book_tags_views.xml",
         "views/menus.xml",
     ],

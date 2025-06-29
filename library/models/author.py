@@ -7,6 +7,7 @@ class Author(models.Model):
     name = fields.Char(string='Name', required=True)
     email = fields.Char(string='Email')
     bio = fields.Text(string='Bio')
+    birth_date = fields.Date(string='Birth Date', help='Author birth date')
     book_ids = fields.One2many(
         'library.book',
         'author_id',

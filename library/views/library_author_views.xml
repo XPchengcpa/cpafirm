@@ -9,6 +9,7 @@
                     <group col="3">
                         <group>
                             <field name="name" />
+                            <field name="birth_date" />
                         </group>
                         <group>
                             <field name="email" />
@@ -40,6 +41,7 @@
             <list>
                 <field name="name" />
                 <field name="email" />
+                <field name="birth_date" />
                 <field name="bio" />
             </list>
         </field>
