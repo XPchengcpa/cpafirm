@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_borrow_wizard_form" model="ir.ui.view">
+        <field name="name">library.borrow.wizard.form</field>
+        <field name="model">library.borrow.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Borrow Book">
+                <sheet>
+                    <group>
+                        <field name="book_id" readonly="1"/>
+                        <field name="borrower_id" required="1"/>
+                        <field name="borrow_date"/>
+                        <field name="return_date"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_confirm_borrow" string="Confirm" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_borrow_wizard" model="ir.actions.act_window">
+        <field name="name">Borrow Book</field>
+        <field name="res_model">library.borrow.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

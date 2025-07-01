@@ -4,4 +4,4 @@ access_library_author,access_library_author,model_library_author,base.group_user
 access_library_publisher,access_library_publisher,model_library_publisher,base.group_user,1,1,1,1
 access_library_borrow,access_library_borrow,model_library_borrow,base.group_user,1,1,1,1
 access_library_book_tag,access_library_book_tag,model_library_book_tag,base.group_user,1,1,1,1
-
+access_library_borrow_wizard,library_borrow_wizard,model_library_borrow_wizard,base.group_user,1,1,1,1

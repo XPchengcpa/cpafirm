@@ -10,6 +10,7 @@
     "data": [
         "data/ir_sequence_data.xml",
         "security/ir.model.access.csv",
+        "wizard/borrow_wizard_views.xml",
         "views/library_book_views.xml",
         "views/library_author_views.xml",
         "views/library_publisher_views.xml",

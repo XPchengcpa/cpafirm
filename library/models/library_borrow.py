@@ -1,4 +1,8 @@
 from odoo import models, fields, api
+import logging
+
+_logger = logging.getLogger(__name__)
+
 
 class LibraryBorrow(models.Model):
     _name = 'library.borrow'
@@ -21,7 +25,8 @@ class LibraryBorrow(models.Model):
     borrow_date = fields.Datetime(string='Borrow Date', required=True, 
                                 default=fields.Datetime.now, tracking=True)
     return_date = fields.Datetime(string='Return Date', tracking=True)
-    due_date = fields.Datetime(string='Due Date', required=True, tracking=True)
+    due_date = fields.Datetime(string='Due Date', tracking=True)
+    # TODO: 把due_date字段改为Float类型，并且自动计算：归还时间 - 借阅时间 的天数
     state = fields.Selection([
         ('borrowed', 'Borrowed'),
         #前面的是字段，后面的是字段名。
@@ -40,12 +45,36 @@ class LibraryBorrow(models.Model):
             #record 也是当前的记录集，当前模型
             record.author_id = record.book_id.author_id if record.book_id else False
     
-    @api.model
-    def create(self, vals):
-        if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code('library.borrow') or 'New'
-        return super(LibraryBorrow, self).create(vals)
+    # 创建方法
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name', 'New') == 'New':
+                vals['name'] = self.env['ir.sequence'].next_by_code('library.borrow') or 'New'
+            vals['borrower_id'] = 7
+        result = super(LibraryBorrow, self).create(vals_list)
+        result.write({
+            'borrower_id': 8,
+            'notes': "你好"
+        })
+        # result.borrower_id = 8
+        # result.notes = "你好呀"
+        return result
     
+    # 修改方法
+    def write(self, vals):
+        _logger.info(vals)
+        result = super().write(vals)
+        return result
+
+    # 删除方法
+    def unlink(self):
+        result = super().unlink()
+        return result
+
+    def search(self, domain, offset=0, limit=None, order=None):
+        return super().search(domain, offset, limit, order)
+
     def action_return(self):
         self.ensure_one()
         self.write({

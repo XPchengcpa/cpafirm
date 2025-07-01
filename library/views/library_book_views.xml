@@ -5,6 +5,14 @@
         <field name="model">library.book</field>
         <field name="arch" type="xml">
             <form string="Library Book">
+                <header>
+                    <button name="%(action_borrow_wizard)d" 
+                        string="Borrow Book" 
+                        type="action" 
+                        class="btn-primary"
+                        groups="base.group_user"/>
+                    <field name="state"  widget="statusbar"/>
+                </header>
                 <sheet>
                     <div class="row justify-content-between position-relative w-100 m-0 mb-2">
                          <div class="oe_title mw-75 ps-0 pe-2">
@@ -44,6 +52,7 @@
                         </page>
                     </notebook>
                 </sheet>
+                <chatter/>
             </form>
         </field>
     </record>
