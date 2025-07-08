@@ -45,3 +45,4 @@ class LibraryBook(models.Model):
     def _compute_final_price(self):
         for book in self:
             book.final_price = book.original_price - book.discount_amount
+

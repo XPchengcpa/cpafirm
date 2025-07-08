@@ -23,13 +23,14 @@
                     <group col="2">
                         <group>
                             <field name="book_id" options="{'no_create': True}"/>
-                            <field name="author_id" readonly="1"/>
+                            <field name="author_id" readonly="1" context="{'author_from_borrow':'1111'}"/>
                             <field name="borrower_id" options="{'no_create': True}"/>
                         </group>
                         <group>
                             <field name="borrow_date"/>
                             <field name="due_date"/>
                             <field name="return_date"/>
+                            <field name="display_name"/>
                         </group>
                     </group>
                     <notebook>
@@ -49,6 +50,7 @@
         <field name="model">library.borrow</field>
         <field name="arch" type="xml">
             <list decoration-danger="state=='overdue'" decoration-success="state=='returned'">
+                <field name="id"/>
                 <field name="name"/>
                 <field name="book_id"/>
                 <field name="author_id"/>
