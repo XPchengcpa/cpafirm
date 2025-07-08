@@ -27,6 +27,8 @@ class LibraryBorrow(models.Model):
     return_date = fields.Datetime(string='Return Date', tracking=True)
     due_date = fields.Datetime(string='Due Date', tracking=True)
     # TODO: 把due_date字段改为Float类型，并且自动计算：归还时间 - 借阅时间 的天数
+    due_days = fields.Float(string='Due Days', compute='_compute_due_days', store=True)
+    #compute 是计算逻辑，store 是存储逻辑。compute 是一个函数，需要另外定义。
     state = fields.Selection([
         ('borrowed', 'Borrowed'),
         #前面的是字段，后面的是字段名。
@@ -44,6 +46,18 @@ class LibraryBorrow(models.Model):
         for record in self:
             #record 也是当前的记录集，当前模型
             record.author_id = record.book_id.author_id if record.book_id else False
+    
+    @api.depends('return_date', 'borrow_date')
+    def _compute_due_days(self):
+        for record in self:
+            if record.return_date and record.borrow_date:
+                record.due_days = (record.return_date - record.borrow_date).days
+            else:
+                record.due_days = 0
+    #函数定义不要和字段定义放在一起，要归类。
+    #函数与函数之间要空行，保持一定的代码规范。
+    #self 就是class 的实例。
+    #return-date 是日期类型，borrow-date 是日期类型。.days 是日期类型。为什么要加.days?因为.days 是日期类型。取两个日期的时间段的天数
     
     # 创建方法
     @api.model_create_multi
