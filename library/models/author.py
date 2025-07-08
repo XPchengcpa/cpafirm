@@ -1,4 +1,7 @@
-from odoo import models, fields
+import logging
+from odoo import models, fields, api
+_logger = logging.getLogger(__name__)
+
 
 class Author(models.Model):
     _name = 'library.author'
@@ -18,4 +21,26 @@ class Author(models.Model):
     #关联的是书，通过author_id 关联到书； 
 
 
-   
+    @api.depends_context('author_from_book', 'author_from_borrow')
+    def _compute_display_name(self):
+        _logger.info(self._context)
+        if not self._context.get('author_from_book') and not self._context.get('author_from_borrow'):
+            return super()._compute_display_name()
+        for author in self:
+            if self._context.get('author_from_book'):
+                author.display_name = f'{author.name} - {author.email}'
+            else:
+                author.display_name = f'{author.name}'
+# {
+#     'lang': 'zh_CN', 
+#     'tz': 'Asia/Shanghai', 
+#     'uid': 2, 
+#     'allowed_company_ids': [1], 
+#     'bin_size': True, 
+#     'params': {
+#         'resId': 1, 
+#         'action': 567, 
+#         'actionStack': [{'action': 567}, {'resId': 1, 'action': 567}]
+#     }, 
+#     'author_from_book': '1'
+# }

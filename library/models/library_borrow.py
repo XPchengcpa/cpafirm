@@ -8,7 +8,7 @@ class LibraryBorrow(models.Model):
     _name = 'library.borrow'
     _description = 'Library Borrow Record'
     _inherit = ['mail.thread']
-    _order = 'borrow_date desc'
+    _order = 'borrow_date desc, id asc'
     #类的继承，继承mail.thread，mail.thread是odoo自带的模块，用于记录邮件的跟踪。
     #Line 8 都是属性，_name 代表一个模型的名字。
 
@@ -20,7 +20,7 @@ class LibraryBorrow(models.Model):
     borrower_id = fields.Many2one('res.partner', string='Borrower', required=True, 
                                  tracking=True, ondelete='restrict')
     author_id = fields.Many2one('library.author', string='Author', readonly=True, 
-                               compute='_compute_author', store=True)
+                               compute='_compute_author')
     #计算逻辑写到_compute_author函数中。
     borrow_date = fields.Datetime(string='Borrow Date', required=True, 
                                 default=fields.Datetime.now, tracking=True)

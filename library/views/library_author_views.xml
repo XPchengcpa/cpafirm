@@ -13,6 +13,7 @@
                         </group>
                         <group>
                             <field name="email" />
+                            <field name="display_name" />
                         </group>
                         <group>
                             <field name="bio" />
