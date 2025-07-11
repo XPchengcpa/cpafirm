@@ -8,7 +8,7 @@
                 <header>
                     <button name="action_return" string="Return Book" type="object" 
                             class="oe_highlight" 
-                            invisible="state not in ('borrowed', 'overdue')"/>
+                            invisible="state not in ['borrowed', 'overdue']"/>
                     <button name="action_cancel" string="Cancel" type="object" 
                             invisible="state not in ('borrowed', 'overdue')"/>
                     <field name="state" widget="statusbar" 

@@ -9,6 +9,7 @@
     "application": True,
     "data": [
         "data/ir_sequence_data.xml",
+        "data/ir_cron.xml",
         "security/ir.model.access.csv",
         "wizard/borrow_wizard_views.xml",
         "views/library_book_views.xml",

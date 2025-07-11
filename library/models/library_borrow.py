@@ -12,7 +12,7 @@ class LibraryBorrow(models.Model):
     #类的继承，继承mail.thread，mail.thread是odoo自带的模块，用于记录邮件的跟踪。
     #Line 8 都是属性，_name 代表一个模型的名字。
 
-
+    active = fields.Boolean(default=True)
     name = fields.Char(string='Reference', required=True, copy=False, readonly=True, 
                       default=lambda self: 'New')
     book_id = fields.Many2one('library.book', string='Book', required=True, 
