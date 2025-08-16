@@ -1,14 +1,14 @@
 <odoo>
     <data>
-        <record id="hide_user_menu" model="ir.ui.view">
-            <field name="name">user.hide.menu</field>
+        <record id="hide_user_menus_reports" model="ir.ui.view">
+            <field name="name">user.hide.menu.report</field>
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
-                    <page string="Hide Menus"  attrs="{'invisible': [('is_admin','=', True)]}">
+                    <page string="Hide Menus" invisible="is_admin">
                         <tree>
-                            <field name="hide_menu_ids"/>
+                            <field name="hide_ui_menu_ids"/>
                         </tree>
                     </page>
                 </xpath>
@@ -18,15 +18,15 @@
             </field>
         </record>
 
-        <record id="ir_ui_menu_users" model="ir.ui.view">
-            <field name="name">restrict.menu</field>
+        <record id="ir_ui_menu_hide_users" model="ir.ui.view">
+            <field name="name">restrict.menu.users</field>
             <field name="model">ir.ui.menu</field>
             <field name="inherit_id" ref="base.edit_menu_access"/>
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
                     <page string="Restrict Users" name="restrict_users">
                         <tree>
-                            <field name="restrict_user_ids"/>
+                            <field name="hide_user_ids"/>
                         </tree>
                     </page>
                 </xpath>

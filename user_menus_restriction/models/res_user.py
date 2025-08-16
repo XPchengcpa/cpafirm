@@ -7,7 +7,7 @@ class HideMenuUser(models.Model):
     _inherit = 'res.users'
 
     is_admin = fields.Boolean(compute='_compute_is_admin', string="Admin")
-    hide_menu_ids = fields.Many2many('ir.ui.menu', 'res_user_hide_menus_rel', string="Hide Menus")
+    hide_ui_menu_ids = fields.Many2many('ir.ui.menu', 'res_user_hide_ui_menus_rel', string="Hide Menus")
 
     def _compute_is_admin(self):
         for rec in self:
@@ -22,10 +22,10 @@ class HideMenuUser(models.Model):
 
     def write(self, vals):
         res = super(HideMenuUser, self).write(vals)
-        for record in self:
-            for menu in record.hide_menu_ids:
+        for record in self.sudo():
+            for menu in record.hide_ui_menu_ids:
                 menu.write({
-                    'restrict_user_ids': [(4, record.id)]
+                    'hide_user_ids': [(4, record.id)]
                 })
         self.clear_caches()
         return res
@@ -34,4 +34,4 @@ class HideMenuUser(models.Model):
 class UserRestrictMenu(models.Model):
     _inherit = 'ir.ui.menu'
 
-    restrict_user_ids = fields.Many2many('res.users', 'res_user_hide_menus_rel', string="User")
+    hide_user_ids = fields.Many2many('res.users', 'res_user_hide_ui_menus_rel', string="Users")

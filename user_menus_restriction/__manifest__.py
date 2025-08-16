@@ -2,7 +2,7 @@
 
 {
     "name": "Hide Menu Restrictions",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "summary": "Hide specific menus for specific user. ",
     "description": "Hide menu, prohibit actions",
     "category": "Extra Tools",
