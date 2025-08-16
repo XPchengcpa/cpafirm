@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* user_menus_restriction
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-23 03:43+0000\n"
+"PO-Revision-Date: 2025-03-23 03:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: user_menus_restriction
+#: model:ir.model.fields,field_description:user_menus_restriction.field_res_users__is_admin
+msgid "Admin"
+msgstr ""
+
+#. module: user_menus_restriction
+#: model:ir.model.fields,field_description:user_menus_restriction.field_res_users__hide_menu_ids
+#: model_terms:ir.ui.view,arch_db:user_menus_restriction.hide_user_menu
+msgid "Hide Menus"
+msgstr ""
+
+#. module: user_menus_restriction
+#: model:ir.model,name:user_menus_restriction.model_ir_ui_menu
+msgid "Menu"
+msgstr ""
+
+#. module: user_menus_restriction
+#. odoo-python
+#: code:addons/user_menus_restriction/controllers/main.py:0
+#, python-format
+msgid "No permission to access this action"
+msgstr ""
+
+#. module: user_menus_restriction
+#: model_terms:ir.ui.view,arch_db:user_menus_restriction.ir_ui_menu_users
+msgid "Restrict Users"
+msgstr ""
+
+#. module: user_menus_restriction
+#: model:ir.model,name:user_menus_restriction.model_res_users
+#: model:ir.model.fields,field_description:user_menus_restriction.field_ir_ui_menu__restrict_user_ids
+msgid "User"
+msgstr ""

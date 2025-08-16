@@ -44,3 +44,9 @@ class Author(models.Model):
 #     }, 
 #     'author_from_book': '1'
 # }
+
+class Respartner(models.Model):
+    _inherit = 'res.partner'
+
+    partner_name = fields.Char(string="name")
+    x_my_partner_name = fields.Char(string="My name")
