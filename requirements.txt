@@ -1,0 +1,5 @@
+paramiko
+boto3
+nextcloud-api-wrapper
+pyncclient
+dropbox
