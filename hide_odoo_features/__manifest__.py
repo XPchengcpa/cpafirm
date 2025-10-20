@@ -6,11 +6,12 @@
     "author": "Mo Li",
     "category": "Extra Tools",
     "license": "LGPL-3",
-    "depends": ["auth_totp"],
+    "depends": ["auth_totp", "mail"],
     "application": False,
     "installable": True,
     "auto_install": False,
     "data": [
+        'data/ir_config_data.xml',
         'views/res_users_profile_views.xml'
       ],
 }
