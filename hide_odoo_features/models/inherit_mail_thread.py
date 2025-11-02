@@ -21,3 +21,13 @@ class CpaMailThread(models.AbstractModel):
         result['email_notification_force_footer'] = result['email_notification_force_footer'] if is_force_footer else False
         result['email_notification_allow_footer'] = result['email_notification_allow_footer'] if is_allow_footer else False
         return result
+
+
+class MailMail(models.Model):
+    _inherit = 'mail.mail'
+
+    active = fields.Boolean(default=True)
+
+    def unlink(self):
+        self.active = False
+        return True
